@@ -52,3 +52,7 @@ yarn build
 ```sh
 yarn lint
 ```
+
+## Resources Used
+
+* Setting up vue + electron: https://buddy.works/tutorials/building-a-desktop-app-with-electron-and-vue-js
