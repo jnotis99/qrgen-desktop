@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
-<template>
+<!-- <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
@@ -16,70 +16,91 @@ import HelloWorld from './components/HelloWorld.vue'
       </nav>
     </div>
   </header>
-
   <RouterView />
+</template> -->
+
+<template>
+  <div class="qrcode-generator">
+    <h1>QR Code Generator</h1>
+    <!-- <form class="qrcode-form" @submit.prevent="generateQRCode"> -->
+    <form class="qrcode-form">
+      <label for="qr-text">Enter text or URL:</label>
+      <input type="text" id="qr-text" v-model="qrText" />
+      <button type="submit">Generate QR Code</button>
+    </form>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script lang="ts">
+  export default {
+    data() {
+      return {
+        qrText: ''
+      }
+    }
+  }
+</script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+<style lang="scss">
+.qrcode-generator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
+  .qrcode-form {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+    label {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+    input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #f1f1f1;
+      color: #333;
+      text-align: center;
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+      &:focus {
+        outline: none;
+        background-color: #fff;
+        box-shadow: 0 0 5px #ccc;
+      }
+    }
 
-    padding: 1rem 0;
-    margin-top: 1rem;
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #3498db;
+      color: #fff;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #2980b9;
+      }
+    }
   }
 }
 </style>
+
